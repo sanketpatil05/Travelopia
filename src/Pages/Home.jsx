@@ -9,7 +9,8 @@ import {
   Box,
   Select,
   Button,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+import axios from "axios";
 export const Home = () => {
 const [data, setData]=useState({})
 
@@ -22,6 +23,11 @@ const [data, setData]=useState({})
   const handlesubmit=(e)=>{
     e.preventDefault();
     console.log(data)
+
+     axios.post("https://lime-bright-fox.cyclic.app/post", data).then((res)=>{
+      console.log(res.data)
+      alert("Travel location added ")
+     }).catch(er=>console.log(er))
   }
   return (
     <div>
